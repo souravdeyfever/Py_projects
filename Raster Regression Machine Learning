@@ -1,0 +1,311 @@
+'''1. Linear Regression'''
+//-----------------------------------------
+from sklearn.linear_model import LinearRegression
+
+# Step 3: Train the linear regression model
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+# Step 4: Test the model
+y_pred = model.predict(X_test)
+mse = mean_squared_error(y_test, y_pred)
+print(f'Mean Squared Error: {mse}')
+
+# Step 6: Predict using the trained model
+predictions = model.predict(stacked_rasters_reshaped)
+
+
+'''2. Decision Tree Regressor'''
+//-----------------------------------------
+
+from sklearn.tree import DecisionTreeRegressor
+
+# Step 3: Train the decision tree regressor model
+model = DecisionTreeRegressor()
+model.fit(X_train, y_train)
+
+# Step 4: Test the model
+y_pred = model.predict(X_test)
+mse = mean_squared_error(y_test, y_pred)
+print(f'Mean Squared Error: {mse}')
+
+# Step 6: Predict using the trained model
+predictions = model.predict(stacked_rasters_reshaped)
+
+'''3. Gradient Boosting Regressor'''
+//-----------------------------------------
+
+from sklearn.ensemble import GradientBoostingRegressor
+
+# Step 3: Train the gradient boosting regressor model
+model = GradientBoostingRegressor(n_estimators=100, random_state=42)
+model.fit(X_train, y_train)
+
+# Step 4: Test the model
+y_pred = model.predict(X_test)
+mse = mean_squared_error(y_test, y_pred)
+print(f'Mean Squared Error: {mse}')
+
+# Step 6: Predict using the trained model
+predictions = model.predict(stacked_rasters_reshaped)
+
+
+'''4. Support Vector Machine (SVM) Regressor'''
+//-----------------------------------------
+
+from sklearn.svm import SVR
+
+# Step 3: Train the SVM regressor model
+model = SVR(kernel='rbf', C=1e3, gamma=0.1)
+model.fit(X_train, y_train)
+
+# Step 4: Test the model
+y_pred = model.predict(X_test)
+mse = mean_squared_error(y_test, y_pred)
+print(f'Mean Squared Error: {mse}')
+
+# Step 6: Predict using the trained model
+predictions = model.predict(stacked_rasters_reshaped)
+
+
+'''5. Random Forest Regressor with Hyperparameter Tuning'''
+//-----------------------------------------
+
+from sklearn.model_selection import GridSearchCV
+
+# Define hyperparameter tuning space
+param_grid = {
+    'n_estimators': [10, 50, 100],
+    'max_depth': [None, 5, 10]
+}
+
+# Step 3: Train and tune the random forest regressor model
+grid_search = GridSearchCV(RandomForestRegressor(random_state=42), param_grid, cv=5)
+grid_search.fit(X_train, y_train)
+
+# Step 4: Test the best-performing model
+best_model = grid_search.best_estimator_
+y_pred = best_model.predict(X_test)
+mse = mean_squared_error(y_test, y_pred)
+print(f'Mean Squared Error: {mse}')
+
+# Step 6: Predict using the best-performing model
+predictions = best_model.predict(stacked_rasters_reshaped)
+
+
+'''6. K-Nearest Neighbors (KNN) Regressor'''
+//-----------------------------------------
+
+from sklearn.neighbors import KNeighborsRegressor
+
+# Step 3: Train the KNN regressor model
+model = KNeighborsRegressor(n_neighbors=5)
+model.fit(X_train, y_train)
+
+# Step 4: Test the model
+y_pred = model.predict(X_test)
+mse = mean_squared_error(y_test, y_pred)
+print(f'Mean Squared Error: {mse}')
+
+# Step 6: Predict using the trained model
+predictions = model.predict(stacked_rasters_reshaped)
+
+'''7. Naive Bayes Regressor'''
+//-----------------------------------------
+
+from sklearn.naive_bayes import GaussianNB
+
+# Step 3: Train the Naive Bayes regressor model
+model = GaussianNB()
+model.fit(X_train, y_train)
+
+# Step 4: Test the model
+y_pred = model.predict(X_test)
+mse = mean_squared_error(y_test, y_pred)
+print(f'Mean Squared Error: {mse}')
+
+# Step 6: Predict using the trained model
+predictions = model.predict(stacked_rasters_reshaped)
+
+'''8. Neural Network Regressor'''
+//-----------------------------------------
+
+from sklearn.neural_network import MLPRegressor
+
+# Step 3: Train the neural network regressor model
+model = MLPRegressor(hidden_layer_sizes=(100, 50), activation='relu')
+model.fit(X_train, y_train)
+
+# Step 4: Test the model
+y_pred = model.predict(X_test)
+mse = mean_squared_error(y_test, y_pred)
+print(f'Mean Squared Error: {mse}')
+
+# Step 6: Predict using the trained model
+predictions = model.predict(stacked_rasters_reshaped)
+
+'''9. AdaBoost Regressor'''
+//-----------------------------------------
+
+from sklearn.ensemble import AdaBoostRegressor
+
+# Step 3: Train the AdaBoost regressor model
+model = AdaBoostRegressor(n_estimators=100, random_state=42)
+model.fit(X_train, y_train)
+
+# Step 4: Test the model
+y_pred = model.predict(X_test)
+mse = mean_squared_error(y_test, y_pred)
+print(f'Mean Squared Error: {mse}')
+
+# Step 6: Predict using the trained model
+predictions = model.predict(stacked_rasters_reshaped)
+
+'''10. Gradient Boosting Regressor with Cross-Validation'''
+//-----------------------------------------
+
+from sklearn.model_selection import cross_val_score
+
+# Step 3: Train the gradient boosting regressor model with cross-validation
+model = GradientBoostingRegressor(n_estimators=100, random_state=42)
+scores = cross_val_score(model, X_train, y_train, cv=5)
+
+# Step 4: Calculate the mean squared error on the test set
+y_pred = model.predict(X_test)
+mse = mean_squared_error(y_test, y_pred)
+print(f'Mean Squared Error: {mse}')
+
+# Step 6: Predict using the trained model
+predictions = model.predict(stacked_rasters_reshaped)
+
+'''11. Extreme Gradient Boosting (XGBoost) Regressor'''
+//-----------------------------------------
+
+import xgboost as xgb
+
+# Step 3: Train the XGBoost regressor model
+model = xgb.XGBRegressor(objective='reg:squarederror', n_estimators=100, random_state=42)
+model.fit(X_train, y_train)
+
+# Step 4: Test the model
+y_pred = model.predict(X_test)
+mse = mean_squared_error(y_test, y_pred)
+print(f'Mean Squared Error: {mse}')
+
+# Step 6: Predict using the trained model
+predictions = model.predict(stacked_rasters_reshaped)
+
+'''12. eXtreme Gradient Boosting (XGBoost) Regressor with Hyperparameter Tuning'''
+//------------------------------------------------------
+
+from sklearn.model_selection import GridSearchCV
+
+# Define hyperparameter tuning space
+param_grid = {
+    'max_depth': [3, 5, 7],
+    'learning_rate': [0.1, 0.5, 1]
+}
+
+# Step 3: Train and tune the XGBoost regressor model
+grid_search = GridSearchCV(xgb.XGBRegressor(objective='reg:squarederror', random_state=42), param_grid, cv=5)
+grid_search.fit(X_train, y_train)
+
+# Step 4: Test the best-performing model
+best_model = grid_search.best_estimator_
+y_pred = best_model.predict(X_test)
+mse = mean_squared_error(y_test, y_pred)
+print(f'Mean Squared Error: {mse}')
+
+# Step 6: Predict using the best-performing model
+predictions = best_model.predict(stacked_rasters_reshaped)
+
+
+'''13. LightGBM Regressor'''
+//-----------------------------------------
+
+import lightgbm as lgb
+
+# Step 3: Train the LightGBM regressor model
+model = lgb.LGBMRegressor(objective='reg:squarederror', num_leaves=31, random_state=42)
+model.fit(X_train, y_train)
+
+# Step 4: Test the model
+y_pred = model.predict(X_test)
+mse = mean_squared_error(y_test, y_pred)
+print(f'Mean Squared Error: {mse}')
+
+# Step 6: Predict using the trained model
+predictions = model.predict(stacked_rasters_reshaped)
+
+'''14. CatBoost Regressor'''
+//-----------------------------------------
+
+import catboost as cb
+
+# Step 3: Train the CatBoost regressor model
+model = cb.CatBoostRegressor(iterations=100, learning_rate=0.1, random_state=42)
+model.fit(X_train, y_train)
+
+# Step 4: Test the model
+y_pred = model.predict(X_test)
+mse = mean_squared_error(y_test, y_pred)
+print(f'Mean Squared Error: {mse}')
+
+# Step 6: Predict using the trained model
+predictions = model.predict(stacked_rasters_reshaped)
+
+'''15. TensorFlow Keras Regressor'''
+//-----------------------------------------
+
+import tensorflow as tf
+
+# Step 3: Train the TensorFlow Keras regressor model
+model = tf.keras.models.Sequential([
+    tf.keras.layers.Dense(64, activation='relu', input_shape=(X_train.shape[1],)),
+    tf.keras.layers.Dense(1)
+])
+model.compile(optimizer='adam', loss='mean_squared_error')
+model.fit(X_train, y_train, epochs=100)
+
+# Step 4: Test the model
+y_pred = model.predict(X_test)
+mse = mean_squared_error(y_test, y_pred)
+print(f'Mean Squared Error: {mse}')
+
+# Step 6: Predict using the trained model
+predictions = model.predict(stacked_rasters_reshaped)
+
+
+'''16. Support Vector Regression (SVR)'''
+//-----------------------------------------
+
+from sklearn.svm import SVR
+
+# Step 3: Train the SVR model
+model = SVR(kernel='rbf', C=1e3, gamma=0.1, random_state=42)
+model.fit(X_train, y_train)
+
+# Step 4: Test the model
+y_pred = model.predict(X_test)
+mse = mean_squared_error(y_test, y_pred)
+print(f'Mean Squared Error: {mse}')
+
+# Step 6: Predict using the trained model
+predictions = model.predict(stacked_rasters_reshaped)
+
+'''17. Elastic Net Regressor'''
+//-----------------------------------------
+
+from sklearn.linear_model import ElasticNet
+
+# Step 3: Train the Elastic Net regressor model
+model = ElasticNet(alpha=0.1, l1_ratio=0.5, random_state=42)
+model.fit(X_train, y_train)
+
+# Step 4: Test the model
+y_pred = model.predict(X_test)
+mse = mean_squared_error(y_test, y_pred)
+print(f'Mean Squared Error: {mse}')
+
+# Step 6: Predict using the trained model
+predictions = model.predict(stacked_rasters_reshaped)
